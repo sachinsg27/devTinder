@@ -22,11 +22,11 @@ app.get("/", (req, res) => {
   res.send("Welcome to Dashboard");
 });
 
-app.get("/test", (req, res) => {
+app.post("/test", (req, res) => {
   res.send("Welcome to Testing");
 });
 
-app.get("/hello", (req, res) => {
+app.delete("/hello", (req, res) => {
   res.send("Hello Hello Hello");
 });
 
