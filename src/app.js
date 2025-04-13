@@ -18,15 +18,16 @@ const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => {
+app.use("/test", (req, res, next) => {
   res.send("Welcome to Dashboard");
+  // next();
 });
 
-app.post("/test", (req, res) => {
+app.use("/test", (req, res) => {
   res.send("Welcome to Testing");
 });
 
-app.delete("/hello", (req, res) => {
+app.get("/hello", (req, res) => {
   res.send("Hello Hello Hello");
 });
 
