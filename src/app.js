@@ -33,6 +33,21 @@ app.get("/user", async (req, res) => {
   }
 });
 
+app.get("/one", async (req, res) => {
+  const userEmail = req.body.emailId;
+  try {
+    // console.log(userEmail);
+    const user = await User.findOne({ emailId: userEmail });
+    if (!user) {
+      res.status(400).send("User not found");
+    } else {
+      res.send(user);
+    }
+  } catch (err) {
+    res.status(400).send("Something went wrong");
+  }
+});
+
 app.get("/feed", async (req, res) => {
   try {
     const users = await User.find({});
