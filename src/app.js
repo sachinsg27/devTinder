@@ -14,7 +14,7 @@ app.post("/signup", async (req, res) => {
     await user.save();
     res.send("User added succesfully");
   } catch (err) {
-    res.status(400).send("User not added...");
+    res.status(400).send(err.message);
   }
 });
 
@@ -76,6 +76,7 @@ app.patch("/user", async (req, res) => {
   try {
     await User.findByIdAndUpdate({ _id: userId }, data);
     res.send("User updated succesfully");
+    runValidators: true;
   } catch (err) {
     res.status(400).send("Something went wrong");
   }
