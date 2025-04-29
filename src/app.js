@@ -11,7 +11,7 @@ app.use(express.json());
 // signup the user using email and password
 app.post("/signup", async (req, res) => {
   // console.log(req.body);
-  const user = new User(req.body);
+  // const user = new User(req.body);
 
   try {
     // validation of data
