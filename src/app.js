@@ -45,11 +45,10 @@ app.post("/login", async (req, res) => {
     if (!user) {
       throw new Error("EmailId is not present in DB");
     }
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await user.validatePassword(password);
     if (isPasswordValid) {
       // create a JWT Token
-
-      const token = await jwt.sign({ _id: user._id }, "DEVloper@27");
+      const token = await user.getJWT();
 
       // Add the Token to cookie and send response back to user
 
@@ -75,7 +74,7 @@ app.get("/profile", userAuth, async (req, res) => {
 });
 app.post("/sendConnection", userAuth, async (req, res) => {
   const user = req.user;
-  console.log(user);
+
   res.send(user.firstName + "sent connection request");
 });
 
