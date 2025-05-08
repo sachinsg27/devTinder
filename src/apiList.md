@@ -20,5 +20,5 @@
 ## userRouter
 
 - GET /user/requests/recieved - Get all the pending(interested) connection requests
-- GET /user/connections - Get all your connections
+- GET /user/connections - Get all your connections(Basically whom you are connected with [req accepted list])
 - GET /user/feed - Gets you the profiles of other users on platform
