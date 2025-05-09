@@ -2,6 +2,7 @@ const express = require("express");
 const { userAuth } = require("../middlewares/auth");
 const ConnectionRequest = require("../models/connectionRequest");
 const User = require("../models/users");
+const { default: mongoose } = require("mongoose");
 
 const requestRouter = express.Router();
 
@@ -72,6 +73,7 @@ requestRouter.post(
         toUserId: loggedInUser._id,
         status: "interested",
       });
+
       if (!connectionRequest) {
         return res
           .status(404)
