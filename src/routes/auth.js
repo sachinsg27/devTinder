@@ -35,7 +35,7 @@ authRouter.post("/login", async (req, res) => {
     const { emailId, password } = req.body;
     const user = await User.findOne({ emailId: emailId });
     if (!user) {
-      throw new Error("EmailId is not present in DB");
+      throw new Error("EmailId is not Valid!!");
     }
     const isPasswordValid = await user.validatePassword(password);
     if (isPasswordValid) {
@@ -48,7 +48,7 @@ authRouter.post("/login", async (req, res) => {
 
       res.send(user);
     } else {
-      throw new Error("password is incorrect");
+      throw new Error("password is incorrect!!");
     }
   } catch (err) {
     res.status(400).send("ERROR : " + err.message);
